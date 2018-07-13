@@ -88,7 +88,7 @@ describe('ResizableTable', () => {
 
   describe('when no value prop', () => {
     beforeEach(() => {
-      setupComponent()
+      setupComponent();
     });
 
     it('sets widths to the browser calculated column width', () => {
@@ -121,8 +121,8 @@ describe('ResizableTable', () => {
 
     describe('prepareTable', () => {
       beforeEach(() => {
-        spyOn(instance, 'setTableLayout');
-        spyOn(header().find('th').first().instance().style, 'width');
+        jest.spyOn(instance, 'setTableLayout');
+        jest.spyOn(header().find('th').first().instance().style, 'width');
       });
 
       it('sets table layout to auto then fixed', () => {
