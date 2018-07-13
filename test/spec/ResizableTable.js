@@ -36,7 +36,7 @@ describe('ResizableTable', () => {
     };
 
     component = mount((
-      <ResizableTable {...mockProps}>
+      <ResizableTable {...mockProps} value={[100, 100, 100]}>
         <table>
           <thead>
             <tr>
@@ -128,7 +128,6 @@ describe('ResizableTable', () => {
 
     describe('On mouse down', () => {
       beforeEach((done) => {
-        setClientWidth(250);
         const icon = header()
           .find(Resizer)
           .at(1)
@@ -147,13 +146,30 @@ describe('ResizableTable', () => {
         expect(instance.headerCells[2].querySelector('.resize-icon').style.display).toBe('none');
       });
 
-      describe('onResizeEnd', () => {
+      describe('onResizeEnd when size changed', () => {
         beforeEach(() => {
+          setClientWidth(250);
           component.find(Resizable).first().prop('onResizeEnd')();
         });
 
         it('calls onColumnResize with new widths', () => {
           expect(mockProps.onColumnResize).toHaveBeenCalledWith([250, 250, 250]);
+        });
+
+        it('should reset the icon displays', () => {
+          expect(instance.headerCells[1].querySelector('.resize-icon').style.display).toBe('');
+          expect(instance.headerCells[2].querySelector('.resize-icon').style.display).toBe('');
+        });
+      });
+
+      describe('onResizeEnd when size not changed', () => {
+        beforeEach(() => {
+          setClientWidth(100);
+          component.find(Resizable).first().prop('onResizeEnd')();
+        });
+
+        it('does not call onColumnResize', () => {
+          expect(mockProps.onColumnResize).not.toHaveBeenCalled();
         });
 
         it('should reset the icon displays', () => {
