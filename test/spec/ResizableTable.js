@@ -191,6 +191,31 @@ describe('ResizableTable', () => {
         expect(instance.headerCells[2].querySelector('.resize-icon').style.display).toBe('none');
       });
 
+      describe('onResizeDrag', () => {
+        describe('without minWidth prop', () => {
+          it('does not do anything', () => {
+            component.find(Resizable).first().prop('onResizeDrag')({}, { width: 10 });
+            expect(instance.headerCells[1].style.width).toEqual('100px');
+          });
+        });
+
+        describe('with min width', () => {
+          beforeEach(() => {
+            component.setProps({ minWidth: 50 });
+          });
+
+          it('does not do anything when width bigger than minWidth', () => {
+            component.find(Resizable).first().prop('onResizeDrag')({}, { width: 80 });
+            expect(instance.headerCells[1].style.width).toEqual('100px');
+          });
+
+          it('sets to minWidth when width smaller than minWidth', () => {
+            component.find(Resizable).first().prop('onResizeDrag')({}, { width: 10 });
+            expect(instance.headerCells[1].style.width).toEqual('50px');
+          });
+        });
+      });
+
       describe('onResizeEnd when size changed', () => {
         beforeEach(() => {
           setClientWidth(250);
