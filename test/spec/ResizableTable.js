@@ -70,6 +70,22 @@ describe('ResizableTable', () => {
   const header = () => table().find('thead');
   const body = () => table().find('tbody');
 
+  describe('resetCellWidth', () => {
+    it('sets cell width to auto', () => {
+      const setWidth = jest.fn();
+      const cell = {
+        style: {
+          set width(arg) {
+            setWidth(arg);
+          }
+        }
+      };
+
+      ResizableTable.resetCellWidth(cell);
+      expect(setWidth).toHaveBeenCalledWith('auto');
+    });
+  });
+
   describe('when no value prop', () => {
     beforeEach(() => {
       setupComponent()
