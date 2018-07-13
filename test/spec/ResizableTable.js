@@ -80,6 +80,22 @@ describe('ResizableTable', () => {
         .toEqual(['0px', '0px', '0px', '0px']);
     });
 
+    describe('when updated with value prop', () => {
+      beforeEach(() => {
+        component.setProps({ value: [100, 150, 200] });
+      });
+
+      it('sets widths to value if its resizable', () => {
+        expect(instance.headerCells.map(n => n.style.width))
+          .toEqual(['100px', '150px', '200px', expect.any(String)]);
+      });
+
+      it('sets widths to the browser calculated column width if its not resizable', () => {
+        expect(instance.headerCells.map(n => n.style.width))
+          .toEqual([expect.any(String), expect.any(String), expect.any(String), '0px']);
+      });
+    });
+
     describe('setElement', () => {
       it('does not update element if it is null', () => {
         instance.setElement(null);
@@ -104,7 +120,7 @@ describe('ResizableTable', () => {
         .toEqual(['100px', '100px', '100px', expect.any(String)]);
     });
 
-    it('sets widths to the browser calculate column width if its not resizable', () => {
+    it('sets widths to the browser calculated column width if its not resizable', () => {
       expect(instance.headerCells.map(n => n.style.width))
         .toEqual([expect.any(String), expect.any(String), expect.any(String), '0px']);
     });
