@@ -209,6 +209,11 @@ describe('ResizableTable', () => {
             expect(instance.headerCells[1].style.width).toEqual('100px');
           });
 
+          it('does not do anything when width equals minWidth', () => {
+            component.find(Resizable).first().prop('onResizeDrag')({}, { width: 50 });
+            expect(instance.headerCells[1].style.width).toEqual('100px');
+          });
+
           it('sets to minWidth when width smaller than minWidth', () => {
             component.find(Resizable).first().prop('onResizeDrag')({}, { width: 10 });
             expect(instance.headerCells[1].style.width).toEqual('50px');
