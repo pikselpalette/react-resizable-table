@@ -283,6 +283,11 @@ describe('ResizableTable', () => {
       it('sets tableLayout to auto', () => {
         expect(component.find('table').instance().style.tableLayout).toEqual('auto');
       });
+
+      it('removes cell widths if resizable', () => {
+        expect(instance.headerCells.map(n => n.style.width))
+          .toEqual(['', '', '', '0px']);
+      });
     });
   });
 });
