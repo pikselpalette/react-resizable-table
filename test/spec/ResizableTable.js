@@ -36,7 +36,7 @@ describe('ResizableTable', () => {
     };
 
     component = mount((
-      <ResizableTable {...mockProps} value={[100, 100, 100]}>
+      <ResizableTable {...mockProps}>
         <table>
           <thead>
             <tr>
@@ -70,8 +70,38 @@ describe('ResizableTable', () => {
   const header = () => table().find('thead');
   const body = () => table().find('tbody');
 
-  describe('instance', () => {
-    beforeEach(setupComponent);
+  describe('when no value prop', () => {
+    beforeEach(() => {
+      setupComponent()
+    });
+
+    it('sets widths to the browser calculated column width', () => {
+      expect(instance.headerCells.map(n => n.style.width))
+        .toEqual(['0px', '0px', '0px', '0px']);
+    });
+  });
+
+  describe('with value prop', () => {
+    beforeEach(() => setupComponent({ value: [100, 100, 100] }));
+
+    it('sets widths to value if its resizable', () => {
+      expect(instance.headerCells.map(n => n.style.width))
+        .toEqual(['100px', '100px', '100px', expect.any(String)]);
+    });
+
+    it('sets widths to the browser calculate column width if its not resizable', () => {
+      expect(instance.headerCells.map(n => n.style.width))
+        .toEqual([expect.any(String), expect.any(String), expect.any(String), '0px']);
+    });
+
+    describe('when child updated to no table', () => {
+      it('does not throw an error', () => {
+        expect(() => {
+          component.setProps({ children: 'No content' });
+          component.update();
+        }).not.toThrow();
+      });
+    });
 
     describe('structure', () => {
       it('renders a table', () => {
