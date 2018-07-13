@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = {
   mode: 'none',
-  entry: ['./lib/sortable-table.js'],
+  entry: ['./lib/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
