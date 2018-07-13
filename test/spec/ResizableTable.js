@@ -106,6 +106,7 @@ describe('ResizableTable', () => {
     describe('prepareTable', () => {
       beforeEach(() => {
         spyOn(instance, 'setTableLayout');
+        spyOn(header().find('th').first().instance().style, 'width');
       });
 
       it('sets table layout to auto then fixed', () => {
@@ -294,9 +295,9 @@ describe('ResizableTable', () => {
         expect(component.find('table').instance().style.tableLayout).toEqual('auto');
       });
 
-      it('removes cell widths if resizable', () => {
+      it('resets cell widths if resizable', () => {
         expect(instance.headerCells.map(n => n.style.width))
-          .toEqual(['', '', '', '0px']);
+          .toEqual(['auto', 'auto', 'auto', '0px']);
       });
     });
   });
