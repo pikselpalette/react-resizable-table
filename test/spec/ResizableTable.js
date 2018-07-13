@@ -79,6 +79,21 @@ describe('ResizableTable', () => {
       expect(instance.headerCells.map(n => n.style.width))
         .toEqual(['0px', '0px', '0px', '0px']);
     });
+
+    describe('setElement', () => {
+      it('does not update element if it is null', () => {
+        instance.setElement(null);
+        expect(instance.element).toBeTruthy();
+      });
+    });
+
+    describe('prepareTable', () => {
+      it('does not throw if element is null', () => {
+        instance.element = null;
+
+        expect(() => instance.prepareTable()).not.toThrow();
+      });
+    });
   });
 
   describe('with value prop', () => {
