@@ -90,6 +90,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-make-resizable": "^0.2.9"
+    "react-make-resizable": "^0.2.10"
   }
 }
