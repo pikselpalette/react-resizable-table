@@ -104,6 +104,16 @@ describe('ResizableTable', () => {
     });
 
     describe('prepareTable', () => {
+      beforeEach(() => {
+        spyOn(instance, 'setTableLayout');
+      });
+
+      it('sets table layout to auto then fixed', () => {
+        instance.prepareTable();
+        expect(instance.setTableLayout).toHaveBeenCalledWith('auto');
+        expect(instance.setTableLayout).toHaveBeenCalledWith('fixed');
+      });
+
       it('does not throw if element is null', () => {
         instance.element = null;
 
