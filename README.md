@@ -8,3 +8,43 @@
 [![peerDependencies Status](https://david-dm.org/pikselpalette/react-resizable-table/peer-status.svg)](https://david-dm.org/pikselpalette/react-resizable-table?type=peer)
 [![codecov](https://codecov.io/gh/pikselpalette/react-resizable-table/branch/master/graph/badge.svg)](https://codecov.io/gh/pikselpalette/react-resizable-table)
 [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/pikselpalette/react-resizable-table/master)](https://stryker-mutator.github.io)
+
+## Installation
+
+```sh
+npm i --save react-resizable-table
+```
+
+## Usage
+
+```jsx
+import ResizableTable, { ResizingIcon } from 'react-resizable-table';
+
+const MyTable = ({ onColumnResize }) => (
+  <ResizableTable onColumnResize={onColumnResize}>
+    <table>
+      <thead>
+        <tr>
+          <th>Foo <ResizingIcon /></th>
+          <th>Bar <ResizingIcon /></th>
+          <th>No resizing </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>foo</td>
+          <td>bar</td>
+          <td>yep</td>
+        </tr>
+        <tr>
+          <td>whizz</td>
+          <td>woop</td>
+          <td>hi</td>
+        </tr>
+      </tbody>
+    </table>
+  </ResizableTable>
+);
+
+export default MyTable;
+```
