@@ -122,7 +122,6 @@ describe('ResizableTable', () => {
     describe('prepareTable', () => {
       beforeEach(() => {
         jest.spyOn(instance, 'setTableLayout');
-        jest.spyOn(header().find('th').first().instance().style, 'width');
       });
 
       it('sets table layout to auto then fixed', () => {
