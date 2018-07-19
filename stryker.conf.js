@@ -15,7 +15,7 @@ module.exports = (config) => {
     ],
     babelrcFile: '.babelrc',
     transpilers: ['babel'],
-    reporter: ['dots', 'clear-text', 'html'],
+    reporter: ['dots', 'clear-text', 'html', 'dashboard'],
     htmlReporter: {
       baseDir: 'test/results/mutation/html'
     },
