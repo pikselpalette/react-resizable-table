@@ -7,7 +7,7 @@
 [![devDependencies Status](https://david-dm.org/pikselpalette/react-resizable-table/dev-status.svg)](https://david-dm.org/pikselpalette/react-resizable-table?type=dev)
 [![peerDependencies Status](https://david-dm.org/pikselpalette/react-resizable-table/peer-status.svg)](https://david-dm.org/pikselpalette/react-resizable-table?type=peer)
 [![codecov](https://codecov.io/gh/pikselpalette/react-resizable-table/branch/master/graph/badge.svg)](https://codecov.io/gh/pikselpalette/react-resizable-table)
-[![Mutation testing badge](https://badge.stryker-mutator.io/github.com/pikselpalette/react-resizable-table/master)](https://stryker-mutator.github.io)
+[![Mutation testing badge](https://badge.stryker-mutator.io/github.com/pikselpalette/react-resizable-table/master)](https://stryker-mutator.github.io) [![Greenkeeper badge](https://badges.greenkeeper.io/pikselpalette/react-resizable-table.svg)](https://greenkeeper.io/)
 
 ## Installation
 
